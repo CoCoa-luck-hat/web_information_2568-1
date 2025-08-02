@@ -1,0 +1,523 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../style/output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        .swiper-pagination-horizontal_re {
+            top: 0 !important;
+            left: 0;
+            width: 100%;
+            height: fit-content;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-button-prev:after,
+        .swiper-button-next:after {
+            color: #1e1e1e;
+            background-color: #98c7c873;
+            padding: 6px 10px;
+            border-radius: 50%;
+            font-size: 14px;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #417479;
+        }
+
+        .header::before {
+            content: "";
+            display: block;
+            background-image: url(../assets/img/design/Frame\ 59\ \(1\).svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: top left;
+            position: absolute;
+            left: 10%;
+            width: 45%;
+            height: 45%;
+            opacity: 0.4;
+            animation: fadeInDownV2 0.8s ease-out forwards;
+        }
+
+        .header::after {
+            content: "";
+            display: block;
+            background-image: url(../assets/img/design/Frame\ 59\ \(3\).svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 50%;
+            height: 40%;
+            position: absolute;
+            bottom: -15%;
+            left: 0;
+            z-index: 10;
+            opacity: 0.6;
+        }
+
+        @media (min-width: 1200px) {
+            .header::after {
+                width: 60%;
+                height: 55%;
+                bottom: -25%;
+            }
+
+            .swiper-button-prev:after,
+            .swiper-button-next:after {
+                color: #1e1e1e;
+                background-color: #98c7c873;
+                padding: 12px 19px;
+                border-radius: 50%;
+                font-size: 24px !important;
+            }
+            .swiper-pagination-horizontal_re {
+                bottom: 24px !important;
+                top: unset !important;
+                left: 0;
+                width: 100%;
+                height: fit-content;
+
+            }
+        }
+
+        .fade-down {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDownV2 {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+
+            to {
+                opacity: 0.6;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-sneak {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+            animation: fadeInSneak 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInSneak {
+            from {
+                opacity: 0;
+                transform: translateX(100px) translateY(-100px) rotate(60deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="relative font-sans">
+    <nav class="fixed top-0 left-0 z-[999] w-screen bg-white shadow-md">
+        <div class="container mx-auto flex items-center justify-between p-5">
+            <div class="flex items-center gap-3">
+                <img src="../assets/img/icon.png" class="h-15 w-15" alt="" />
+                <p class="text-3xl font-medium">CVC</p>
+            </div>
+            <div class="hidden lg:flex">
+                <ul class="flex items-center gap-7">
+                    <li>
+                        <a href="index.html" class="text-[#c1dcdc] duration-200 hover:text-[#c1dcdc]">หน้าแรก</a>
+                    </li>
+                    <li>
+                        <a href="#E_Book" class="duration-200 hover:text-[#c1dcdc]">สื่อเนื้อหาอิเล็กทรอนิกส์</a>
+                    </li>
+
+                    <li
+                        class="rounded-xl border-1 px-4 py-3 duration-300 hover:border-1 hover:border-[#c1dcdc] hover:bg-[#c1dcdc] hover:shadow-md">
+                        <a href="https://cvc.ac.th/webcvc/">เว็บไซต์วิทยาลัยอาชีวศึกษาเชียงราย</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex items-center justify-between lg:hidden">
+                <div class="relative">
+                    <button id="menu-button" class="flex items-center gap-2 rounded-md bg-[#C1DCDC] px-4 py-2 text-lg text-[#1E1E1E]">
+                        <span>เมนู</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                    <ul id="menu-dropdown"
+                        class="absolute hidden right-0 top-16 z-50 flex w-75 flex-col items-start gap-3 rounded-md bg-[#f3f8f7] p-5 shadow-lg">
+                        <li>
+                            <a href="index.html" class="text-[#c1dcdc] duration-200 hover:text-[#c1dcdc]">หน้าแรก</a>
+                        </li>
+                        <li>
+                            <a href="#E_Book" class="duration-200 hover:text-[#c1dcdc]">สื่อเนื้อหาอิเล็กทรอนิกส์</a>
+                        </li>
+                        <li
+                            class="">
+                            <a href="https://cvc.ac.th/webcvc/">เว็บไซต์วิทยาลัยอาชีวศึกษาเชียงราย</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- section 1 -->
+    <section class="header relative z-0 bg-[#c1dede]">
+        <img src="../assets/img/design/Frame 60 (1).svg" class="fade-sneak absolute right-0 bottom-0 z-10 object-cover"
+            alt="" style="filter: brightness(1.1)" />
+
+        <img src="../assets/img/design/Wb cloudy.svg" class="fade-down absolute top-10 right-10 z-10 object-cover"
+            alt="" style="filter: brightness(1); opacity: 0.7" />
+
+        <div class="relative container mx-auto h-full w-full pt-30 pb-25 lg:pb-16">
+            <img src="../assets/img/design/Vector 187.svg"
+                class="fade-sneak absolute left-6 z-50 scale-50 object-cover lg:left-60 lg:scale-100" alt="" />
+            <div class="grid grid-cols-8 gap-1">
+                <div class="fade-up relative z-30 col-span-6 col-start-2 flex justify-start py-15">
+                    <!-- Slide ข้อความ + ปุ่มควบคุม -->
+                    <div class="absolute inset-0 top-7/12 z-10 flex justify-center lg:top-2/5 lg:justify-end">
+                        <div
+                            class="relative flex h-35 w-4/5 items-center rounded-2xl bg-white p-5 shadow-2xl lg:h-80 lg:w-2/4 lg:p-15">
+                            <div class="swiper mySwiperText relative h-full">
+                                <div class="swiper-wrapper overflow-hidden">
+                                    <div class="swiper-slide !flex !flex-col !justify-between text-xs lg:text-3xl">
+                                        <p>
+                                            ดัชนีการรับรู้การทุจริต พ.ศ.2567 ได้ 34 คะแนน อันดับ 107
+                                            จาก 180 ประเทศ
+                                        </p>
+                                        <a href=""
+                                            class="lg:text-gl w-fit rounded-md bg-[#C1DCDC] px-2 py-1 text-xs lg:text-lg text-[#1E1E1E] lg:px-4 lg:py-2">อ่านเพิ่มเติม</a>
+                                    </div>
+                                    <div class="swiper-slide !flex !flex-col !justify-between text-sm lg:text-3xl">
+                                        <p>
+                                            สมุดภาพอินโฟกราฟิก ความรู้ทั่วไปเกี่ยวกับวงงาน ป.ป.ช.
+                                        </p>
+                                        <a href=""
+                                            class="lg:text-gl w-fit rounded-md bg-[#C1DCDC] px-2 py-1 text-sm lg:text-lg text-[#1E1E1E] lg:px-4 lg:py-2">อ่านเพิ่มเติม</a>
+                                    </div>
+                                    <div class="swiper-slide !flex !flex-col !justify-between text-xs lg:text-3xl">
+                                        <p>
+                                            ห้องเรียนอิเล็กทรอนิกส์ ในรูปแบบเกม เล่นเกมครบ
+                                            ทำข้อสอบผ่าน รับใบประกาศนียบัตรทันที
+                                        </p>
+                                        <a href=""
+                                            class="lg:text-gl w-fit rounded-md bg-[#C1DCDC] px-2 py-1 text-sm lg:text-lg text-[#1E1E1E] lg:px-4 lg:py-2">อ่านเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ปุ่มควบคุม -->
+                            <div class="swiper-button-prev absolute" style="left: -14px; z-index: 10"></div>
+                            <div class="swiper-button-next absolute" style="right: -14px; z-index: 10"></div>
+                        </div>
+                    </div>
+                    <!-- Slide รูปภาพ + Pagination -->
+                    <div class="relative flex w-full flex-col items-center justify-center lg:w-[720px]">
+                        <div class="swiper mySwiperImage mb-4 h-55 w-full rounded-2xl lg:h-110"
+                            style="box-shadow: -8px 13px 0px 0px #1e1e1e">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="../assets/img/download (1).png" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="../assets/img/download.jpg" class="object-top" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="../assets/img/download.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination swiper-pagination-horizontal_re"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section 2 -->
+    <section class="flex justify-center px-2 lg:px-10" id="E_Book">
+        <div class="relative -top-16 container h-full rounded-4xl bg-white px-7 py-7 lg:px-30 lg:py-15">
+            <div class="head mb-5 lg:mb-10 flex items-center gap-2 lg:gap-5">
+                <div class="w-fit" style="background-color: #c1dcdc; padding: 12px; border-radius: 50%">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 lg:w-10 lg:h-10" viewBox="0 0 24 24">
+                        <path fill="#1E1E1E"
+                            d="M6 22q-.825 0-1.412-.587T4 20V4q0-.825.588-1.412T6 2h12q.825 0 1.413.588T20 4v16q0 .825-.587 1.413T18 22zm0-2h12V4h-2v7l-2.5-1.5L11 11V4H6zm0 0V4zm5-9l2.5-1.5L16 11l-2.5-1.5z" />
+                    </svg>
+                </div>
+                <h1 class="text-xl font-medium text-[#1E1E1E] lg:text-4xl">
+                    สื่อเนื้อหาอิเล็กทรอนิกส์
+                </h1>
+            </div>
+
+            <div class="h-full w-full">
+                <!-- Swiper -->
+                <div class="swiper mySwiper-custom relative mb-2">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide rounded-4xl bg-[#c1dcdc7e] shadow-2xs">
+                            <div class="h-full w-full">
+                                <div class="h-90 lg:h-110 w-full p-5 pb-0  ">
+                                    <img src="../assets/img/9h4cKXfmW4EEQcb3QNtDjPvt.png"
+                                        class="h-full w-full rounded-2xl object-cover object-top" />
+                                </div>
+                                <div class="p-5">
+                                    <div class="mb-7">
+                                        <h2 class="text-xl lg:text-2xl text-[#1E1E1E]">คำอธิบายสาระสำคัญของ พรป.</h2>
+                                        <p class="text-gray-600">
+                                            คำอธิบายสาระสำคัญของ พรป.ว่าด้วยการป้องกันและปราบปรามการทุจริต พ.ศ. 2561
+                                            ฉบับคู่มือประชาชน
+                                        </p>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <a href="./E-Book/1.html"
+                                            class="w-full rounded-full bg-[#3c5e62] px-4 py-3 text-center text-white">อ่านเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide rounded-4xl bg-[#c1dcdc7e] shadow-2xs">
+                            <div class="h-full w-full">
+                                <div class="h-90 lg:h-110 w-full p-5 pb-0">
+                                    <img src="../assets/img/download.jpg"
+                                        class="h-full w-full rounded-2xl object-cover object-top" />
+                                </div>
+                                <div class="p-5">
+                                    <div class="mb-7">
+                                        <h2 class="text-xl lg:text-2xl text-[#1E1E1E]">
+                                            หนังสืออินโฟกราฟิก
+                                        </h2>
+                                        <p class="text-gray-600">
+                                            รู้จัก ป.ป.ช. ในหนึ่งนาที:
+                                            หน้าที่และอำนาจของคณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติ
+                                        </p>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <a href="./E-Book/2.html"
+                                            class="w-full rounded-full bg-[#3c5e62] px-4 py-3 text-center text-white">อ่านเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide rounded-4xl bg-[#c1dcdc7e] shadow-2xs">
+                            <div class="h-full w-full">
+                                <div class="h-90 lg:h-110 w-full p-5 pb-0">
+                                    <img src="../assets/img/zydsiRsiw0ufGUuZAYnwoX3G.png"
+                                        class="h-full w-full rounded-2xl object-cover object-top" />
+                                </div>
+                                <div class="p-5">
+                                    <div class="mb-7">
+                                        <h2 class="text-xl lg:text-2xl text-[#1E1E1E]">
+                                            ไขปม 10 คดีทุจริต ภารกิจพิชิตโกง
+                                        </h2>
+                                        <p class="text-gray-600">
+                                            เปิดเผย 10 คดีทุจริตเด่น ๆ ที่สั่นคลอนสังคม
+                                            กับการตามล่าความยุติธรรมเพื่อพิชิตการโกงอย่างยั่งยืน
+                                        </p>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <a href="./E-Book/3.html"
+                                            class="w-full rounded-full bg-[#3c5e62] px-4 py-3 text-center text-white">อ่านเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide rounded-4xl bg-[#c1dcdc7e] shadow-2xs">
+                            <div class="h-full w-full">
+                                <div class="h-90 lg:h-110 w-full p-5 pb-0">
+                                    <img src="../assets/img/sYAx87KuH67VcnHrPMLDRwfU.png"
+                                        class="h-full w-full rounded-2xl object-cover" />
+                                </div>
+                                <div class="p-5">
+                                    <div class="mb-7">
+                                        <h2 class="text-xl lg:text-2xl  text-[#1E1E1E]">หนังสือแนะนำพิพิธภัณฑ์ต้านโกง</h2>
+                                        <p class="text-gray-600">
+                                            พิพิธภัณฑ์ต้านโกงในโลกดิจิทัล: เส้นทางความโปร่งใสที่คุณเข้าถึงได้ทุกที่
+                                        </p>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <a href="./E-Book/5.html"
+                                            class="w-full rounded-full bg-[#3c5e62] px-4 py-3 text-center text-white">อ่านเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide rounded-4xl bg-[#c1dcdc7e] shadow-2xs">
+                            <div class="h-full w-full">
+                                <div class="h-90 lg:h-110 w-full p-5 pb-0">
+                                    <img src="../assets/img/xGPBCFkwr83o73H2MSa3t4f3.png"
+                                        class="h-full w-full rounded-2xl object-cover" />
+                                </div>
+                                <div class="p-5">
+                                    <div class="mb-7">
+                                        <h2 class="text-xl lg:text-2xl  text-[#1E1E1E]">เปิดแฟ้ม 10 คดีทุจริต</h2>
+                                        <p class="text-gray-600">
+                                            เปิดกรุคดีโกงระดับชาติ: วิเคราะห์ 10 คดีทุจริตที่คนไทยต้องรู้
+                                        </p>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <a href="./E-Book/4.html"
+                                            class="w-full rounded-full bg-[#3c5e62] px-4 py-3 text-center text-white">อ่านเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="swiper-paginationcustom flex justify-center"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#314448]">
+        <div class="container text-white mx-auto text-center p-5">
+            จัดทำโดย สสส.1 วิทยาลัยอาชีวศึกษาเชียงราย
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        // Toggle menu dropdown
+        document.getElementById('menu-button').addEventListener('click', function () {
+            var dropdown = document.getElementById('menu-dropdown');
+            dropdown.classList.toggle('hidden');
+        });
+        // สร้าง Swiper สำหรับข้อความ
+        var swiperText = new Swiper(".mySwiperText", {
+            slidesPerView: 1,
+            allowTouchMove: true, // ให้เลื่อนได้ด้วยการลากหรือปุ่ม
+            effect: "fade",
+            loop: true,
+            fadeEffect: {
+                crossFade: true,
+            },
+
+            observer: true,
+            observeParents: true,
+            // ไม่ต้องใส่ navigation ที่นี่
+        });
+
+        // สร้าง Swiper สำหรับรูปภาพ
+        var swiperImage = new Swiper(".mySwiperImage", {
+            slidesPerView: 1,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        // เชื่อม controller หลังสร้างทั้งสอง instance
+        swiperText.controller.control = swiperImage;
+        swiperImage.controller.control = swiperText;
+
+        var swiper = new Swiper(".mySwiper-custom", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-paginationcustom",
+                clickable: true,
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#E_Book"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                var target = document.getElementById('E_Book');
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+<!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 512 512">
+                        <path fill="none" stroke="#1E1E1E" stroke-linejoin="round" stroke-width="32"
+                            d="M368 415.86V72a24.07 24.07 0 0 0-24-24H72a24.07 24.07 0 0 0-24 24v352a40.12 40.12 0 0 0 40 40h328" />
+                        <path fill="none" stroke="#1E1E1E" stroke-linejoin="round" stroke-width="32"
+                            d="M416 464a48 48 0 0 1-48-48V128h72a24 24 0 0 1 24 24v264a48 48 0 0 1-48 48Z" />
+                        <path fill="none" stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="32" d="M240 128h64m-64 64h64m-192 64h192m-192 64h192m-192 64h192" />
+                        <path fill="#1E1E1E"
+                            d="M176 208h-64a16 16 0 0 1-16-16v-64a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v64a16 16 0 0 1-16 16" />
+                    </svg> -->
